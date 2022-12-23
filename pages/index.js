@@ -2,6 +2,8 @@ import Head from "next/head";
 import { useState, useRef } from "react";
 import styles from "./index.module.css";
 
+import Typewriter from "typewriter-effect";
+
 export default function Home() {
   const [themeInput, setthemeInput] = useState("");
   const [result, setResult] = useState();
@@ -24,6 +26,8 @@ export default function Home() {
     setthemeInput("");
   }
 
+  const themes = ['health', 'farming', 'food', 'clocks', 'among us', 'time', 'medicine', 'blockchain', 'machine learning', 'jam', 'animals', 'charities', 'monkeys', 'turtles', 'productivity', 'school', 'business', 'jobs and internships', 'fitness', 'book reviewing', 'golf in space', 'moles', 'cooking and recipes', 'smart shopping']
+
   return (
     <div>
       <Head>
@@ -33,7 +37,18 @@ export default function Home() {
 
       <main className={styles.main}>
         <img src="/bulb.png" className={styles.icon} />
-        <h3>Give me an idea based on...</h3>
+        <h3>
+        Give me an idea based on...
+        <Typewriter onInit={(typewriter)=> {
+          typewriter.start();
+            for (let theme in themes) {
+              typewriter.typeString(themes[theme])
+              typewriter.pauseFor(1000)
+              .deleteAll()
+            }
+          }}
+        />
+        </h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
