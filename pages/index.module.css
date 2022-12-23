@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  padding: 30px;
 }
 .main .icon {
   width: 34px;
@@ -63,8 +64,23 @@
   margin-top: 40px;
   background-color: #ddeeff;
   width: max(200px, 40%);
-  padding: 3%;
+  padding: 4%;
   border-radius: 10px;
   border: 2px solid #777;
   transition: all 1s;
+}
+
+.main .footer {
+  font-size: 1.1rem;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+.main .footer p {
+  display: flex;
+  align-items: center;
+}
+.main .footer img {
+  height: 1.1rem;
+  margin-left: 0.5rem;
 }
