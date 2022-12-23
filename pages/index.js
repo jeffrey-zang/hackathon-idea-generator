@@ -28,11 +28,11 @@ export default function Home() {
     <div>
       <Head>
         <title>Hackathon Project Idea Generator</title>
-        <link rel="icon" href="/dog.png" />
+        <link rel="icon" href="/bulb.png" />
       </Head>
 
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
+        <img src="/bulb.png" className={styles.icon} />
         <h3>Give me an idea based on...</h3>
         <form onSubmit={onSubmit}>
           <input
