@@ -1,13 +1,15 @@
 import { Configuration, OpenAIApi } from "openai";
 
+const key = process.env.OPENAI_API_KEY
+
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: key,
 });
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
   const completion = await openai.createCompletion({
-    model: "text-davinci-002",
+    model: "text-curie-001",
     prompt: generatePrompt(req.body.theme),
     temperature: 1,
     max_tokens: 400,
