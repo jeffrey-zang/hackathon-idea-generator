@@ -39,13 +39,11 @@ export default function Home() {
         <img src="/bulb.png" className={styles.icon} />
         <h3>
         Give me an idea based on...
-        <Typewriter onInit={(typewriter)=> {
-          typewriter.start();
-            for (let theme in themes) {
-              typewriter.typeString(themes[theme])
-              typewriter.pauseFor(1000)
-              .deleteAll()
-            }
+        <Typewriter   
+          options={{
+            strings: themes,
+            autoStart: true,
+            loop: true,
           }}
         />
         </h3>
