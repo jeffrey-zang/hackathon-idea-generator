@@ -46,7 +46,7 @@ export default function Home() {
         </form>
         <div className={styles.result} ref={ref}>
           <h1>Your idea is</h1>
-          {result}
+          {(result == '' || !result) ? "A crowdsourcing tool that allows readers to voluntarily rate and review books they've read. The ratings could be used to generate reading recommendations for other readers, and the reviews could be used to improve the quality and accuracy of book ratings and reviews." : result}
         </div>
       </main>
     </div>
