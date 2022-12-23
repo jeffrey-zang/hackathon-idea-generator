@@ -26,7 +26,7 @@ export default function Home() {
     setthemeInput("");
   }
 
-  const themes = ['health', 'farming', 'food', 'clocks', 'among us', 'time', 'medicine', 'blockchain', 'machine learning', 'jam', 'animals', 'charities', 'monkeys', 'turtles', 'productivity', 'school', 'business', 'jobs and internships', 'fitness', 'book reviewing', 'golf in space', 'moles', 'cooking and recipes', 'smart shopping', 'environment', 'note taking', 'flash cards', 'collaboration']
+  const themes = ['health', 'farming', 'food', 'clocks', 'among us', 'time', 'medicine', 'blockchain', 'machine learning', 'jam', 'animals', 'charities', 'monkeys', 'turtles', 'productivity', 'school', 'business', 'jobs and internships', 'fitness', 'book reviewing', 'golf in space', 'moles', 'cooking and recipes', 'smart shopping']
 
   return (
     <div>
@@ -43,7 +43,7 @@ export default function Home() {
           typewriter.start();
             for (let theme in themes) {
               typewriter.typeString(themes[theme])
-              typewriter.pauseFor(2000)
+              typewriter.pauseFor(1000)
               .deleteAll()
             }
           }}
