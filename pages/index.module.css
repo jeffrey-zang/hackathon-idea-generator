@@ -71,9 +71,8 @@
 }
 
 .main .footer {
+  margin-top: 1rem;
   font-size: 1.1rem;
-  position: absolute;
-  bottom: 0;
   text-align: center;
 }
 .main .footer p {

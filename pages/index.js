@@ -62,10 +62,10 @@ export default function Home() {
           {(result == '' || !result) ? "A crowdsourcing tool that allows readers to voluntarily rate and review books they've read. The ratings could be used to generate reading recommendations for other readers, and the reviews could be used to improve the quality and accuracy of book ratings and reviews." : result}
         </div>
         <div className={styles.footer}>
-          <a href='https://github.com/jeffrey-zang/hackathon-idea-generator'>Source</a>
           <p>Powered by
             <img src='/openai.png' className={styles.openai} />
           </p>
+          <a href='https://github.com/jeffrey-zang/hackathon-idea-generator'>Source</a>
         </div>
       </main>
     </div>
