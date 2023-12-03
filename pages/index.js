@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         <div className={styles.footer}>
           <p>Powered by
-            <img src='/openai.png' className={styles.openai} />
+            <img src='/cohere.png' className={styles.openai} />
           </p>
           <a href='https://github.com/jeffrey-zang/hackathon-idea-generator'>Source</a>
         </div>
