@@ -38,6 +38,6 @@ export default async function (req, res) {
     res.status(200).json({ summary: response.generations[0].text });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ summary: "Error" });
+    res.status(500).json({ message: err.message });
   }
 }
