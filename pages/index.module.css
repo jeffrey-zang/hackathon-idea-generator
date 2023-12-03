@@ -39,7 +39,7 @@
   color: #8e8ea0;
   opacity: 1;
 }
-.main input[type="submit"] {
+.main button {
   padding: 12px 0;
   color: #fff;
   background-color: #87AFC3;
@@ -48,8 +48,9 @@
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  font-family: 'Inter', sans-serif;
 }
-.main input[type="submit"]:hover {
+.main button:hover {
   background-color: #9FBFCE;
 }
 

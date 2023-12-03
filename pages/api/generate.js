@@ -1,11 +1,8 @@
-import { Configuration, OpenAIApi } from "openai";
+import { CohereClient } from "cohere-ai";
 
-const key = process.env.OPENAI_API_KEY
-
-const configuration = new Configuration({
-  apiKey: key,
+const cohere = new CohereClient({
+  token: process.env.NEXT_PUBLIC_COHERE_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
 const amonguses = [
   "A game mode where players can customize their own character with different skins, hats, and outfits.",
@@ -18,28 +15,29 @@ const amonguses = [
 ]
 
 export default async function (req, res) {
-  if (req.body.theme == 'among us') {
-    res.status(200).json({ result: amonguses[Math.floor(Math.random()*amonguses.length)] });
+  try {
+    const { theme } = req.body;
+    
+    if (theme.toLowerCase() == 'among us') {
+      res.status(200).json({ result: amonguses[Math.floor(Math.random()*amonguses.length)] });
+    }  
+    
+    const response = await cohere.generate({
+      model: "command-nightly",
+      prompt: `Generate one, singular, unique, innovative idea for a hackathon project based on this theme: ${theme}. Do not include extra dialogue text. Simply state the idea and explain it. Nothing else. Do not put extra formatting such as markdown. Do not use lists. Just one simple idea and explanation.`,
+      max_tokens: 50,
+      temperature: 0.8,
+      k: 0,
+      p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      stop_sequences: ["--"],
+      return_likelihoods: "NONE",
+    });
+
+    res.status(200).json({ summary: response.generations[0].text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ summary: "Error" });
   }
-  const completion = await openai.createCompletion({
-    model: "text-curie-001",
-    prompt: generatePrompt(req.body.theme),
-    temperature: 1,
-    max_tokens: 400,
-  });
-  res.status(200).json({ result: completion.data.choices[0].text });
-}
-
-function generatePrompt(theme) {
-  return `Give me one hackathon project idea themed around ${theme}. Be sure to only give one idea!!!
-
-  Theme: time
-  idea: A tool that helps people plan and manage their schedules, including features for setting goals and tracking progress.
-  
-  Theme: farming
-  idea: An app that helps farmers plan and optimize their crop production, using data on weather, soil conditions, and market demand to make informed decisions. The app could include tools for tracking and analyzing production data, as well as resources for improving efficiency and profitability.
-
-  Theme: ${theme}
-  idea: 
-`;
 }

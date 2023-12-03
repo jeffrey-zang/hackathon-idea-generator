@@ -7,11 +7,13 @@ import Typewriter from "typewriter-effect";
 export default function Home() {
   const [themeInput, setthemeInput] = useState("");
   const [result, setResult] = useState();
+  const [loading, setLoading] = useState(false);
   const ref = useRef(null);
   let colours = ['EE', 'DD', 'FF']
 
   async function onSubmit(event) {
     event.preventDefault();
+    setLoading(true);
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -22,8 +24,9 @@ export default function Home() {
     const data = await response.json();
 
     ref.current.style.backgroundColor = `#${colours[Math.floor(Math.random() * colours.length)]}${colours[Math.floor(Math.random() * colours.length)]}${colours[Math.floor(Math.random() * colours.length)]}`;
-    setResult(data.result);
+    setResult(data.summary);
     setthemeInput("");
+    setLoading(false);
   }
 
   const themes = ['health', 'farming', 'food', 'clocks', 'among us', 'time', 'medicine', 'blockchain', 'machine learning', 'jam', 'animals', 'charities', 'monkeys', 'turtles', 'productivity', 'school', 'business', 'jobs and internships', 'fitness', 'book reviewing', 'golf in space', 'moles', 'cooking and recipes', 'smart shopping']
@@ -55,7 +58,7 @@ export default function Home() {
             value={themeInput}
             onChange={(e) => setthemeInput(e.target.value)}
           />
-          <input type="submit" value="Generate idea" />
+          <button type="submit">{(loading) ? "Loading..." : "Generate Idea"}</button>
         </form>
         <div className={styles.result} ref={ref}>
           <h1>Your idea is</h1>
