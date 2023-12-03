@@ -1,7 +1,7 @@
 import { CohereClient } from "cohere-ai";
 
 const cohere = new CohereClient({
-  token: process.env.NEXT_PUBLIC_COHERE_API_KEY,
+  token: process.env.COHERE_API_KEY,
 });
 
 const amonguses = [
